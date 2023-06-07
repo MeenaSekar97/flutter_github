@@ -19,7 +19,7 @@ class AuthController {
 
       loading(false);
       PrefUtil.setValue(Constants.name, res.user!.displayName!);
-      Get.offAll(HomeScreen());
+      Get.offAll(const HomeScreen());
     } else {
       loading(false);
     }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_github/controller/auth_controller/auth_controller.dart';
 import 'package:flutter_github/utils/extensions.dart';
 import 'package:flutter_github/utils/styles.dart';
-import 'package:flutter_github/view/home/home_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 

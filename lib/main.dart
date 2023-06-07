@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_github/utils/constants.dart';
-import 'package:flutter_github/utils/extensions.dart';
 import 'package:flutter_github/utils/pref_init.dart';
 import 'package:flutter_github/utils/styles.dart';
 import 'package:flutter_github/view/auth_screen/auth_screen.dart';

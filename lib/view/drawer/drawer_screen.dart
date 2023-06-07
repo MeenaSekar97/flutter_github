@@ -1,18 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_github/controller/organisation_controller/organisation_controller.dart';
-import 'package:flutter_github/services/organisation_service/organisation_service.dart';
-import 'package:flutter_github/utils/extensions.dart';
 import 'package:flutter_github/view/auth_screen/auth_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../model/org_model.dart';
-import '../../utils/constants.dart';
-import '../../utils/pref_init.dart';
 import '../../utils/styles.dart';
 
 class DrawerScreen extends StatefulWidget {

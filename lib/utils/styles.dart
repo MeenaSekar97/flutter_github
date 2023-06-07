@@ -12,4 +12,4 @@ var medium = GoogleFonts.inter(
     fontSize: 16.sp,
     color: const Color(0xff5F607E));
 
-var primaryColor = Color(0xff706CFF);
+var primaryColor = const Color(0xff706CFF);

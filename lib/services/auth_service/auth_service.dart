@@ -11,7 +11,7 @@ class AuthService {
       final res =
           await FirebaseAuth.instance.signInWithProvider(githubProvider);
 
-      print('data${res}');
+      print('data$res');
 
       if (res.user != null) {
         return res;
@@ -19,7 +19,7 @@ class AuthService {
         return null;
       }
     } catch (e) {
-      print('res${e}');
+      print('res$e');
       return null;
     }
   }

@@ -1,11 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_github/model/project_model.dart';
 import 'package:flutter_github/utils/constants.dart';
 import 'package:flutter_github/utils/pref_init.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 
-import '../../model/org_model.dart';
 
 class HomeService {
   static Client client = http.Client();
@@ -26,7 +24,7 @@ class HomeService {
         return null;
       }
     } catch (e) {
-      print('res${e}');
+      print('res$e');
       return null;
     }
   }

@@ -10,7 +10,7 @@ class HomeController extends GetxController {
     loading(true);
     final res = await HomeService.homeService(name);
 
-    print('data${res}');
+    print('data$res');
 
     if (res != null) {
       orgList(res);

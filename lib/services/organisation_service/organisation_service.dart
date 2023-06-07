@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_github/utils/constants.dart';
 import 'package:flutter_github/utils/pref_init.dart';
 import 'package:http/http.dart' as http;
@@ -24,7 +23,7 @@ class OrganisationService {
         return null;
       }
     } catch (e) {
-      print('res${e}');
+      print('res$e');
       return null;
     }
   }
