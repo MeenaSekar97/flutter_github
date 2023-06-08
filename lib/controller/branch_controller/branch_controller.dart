@@ -8,7 +8,10 @@ import '../../model/branch_commit_list.dart';
 
 class BranchController extends GetxController {
   var loading = false.obs;
+  var commitLoading = false.obs;
   var branchList = <BranchListModel>[].obs;
+
+  var currentBranch = ''.obs;
 
   var branchCommitList = <BranchCommitListModel>[].obs;
 
@@ -16,11 +19,10 @@ class BranchController extends GetxController {
     loading(true);
     final res = await BranchService.branchListService(name, projectname);
 
-    print('data$res');
-
     if (res != null) {
       branchList(res);
       if (res.isNotEmpty) {
+        currentBranch(res[0].commit.sha);
         getCommitListService(name, projectname, res[0].commit.sha);
       }
       loading(false);
@@ -30,17 +32,15 @@ class BranchController extends GetxController {
   }
 
   getCommitListService(name, projectname, sha) async {
-    loading(true);
+    commitLoading(true);
     final res =
         await BranchService.branchCommitListService(name, projectname, sha);
 
-    print('data$res');
-
     if (res != null) {
+      commitLoading(false);
       branchCommitList(res);
-      loading(false);
     } else {
-      loading(false);
+      commitLoading(false);
     }
   }
 }

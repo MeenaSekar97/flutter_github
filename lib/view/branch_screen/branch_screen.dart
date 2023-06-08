@@ -118,16 +118,34 @@ class _BranchScreenState extends State<BranchScreen> {
                     .map((e) => Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 5, vertical: 10),
-                          child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 5),
-                              decoration: BoxDecoration(
-                                  color: Colors.black,
-                                  borderRadius: BorderRadius.circular(20)),
-                              child: Text(
-                                e.name,
-                                style: medium.copyWith(color: Colors.white),
-                              )),
+                          child: GestureDetector(
+                            onTap: () {
+                              branchController.currentBranch(e.commit.sha);
+                              branchController.getCommitListService(
+                                  widget.model.owner.login,
+                                  widget.model.name,
+                                  e.commit.sha);
+                            },
+                            child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 10, vertical: 5),
+                                decoration: BoxDecoration(
+                                    color:
+                                        branchController.currentBranch.value ==
+                                                (e.commit.sha)
+                                            ? Colors.black
+                                            : const Color(0xffF3F4FF),
+                                    borderRadius: BorderRadius.circular(20)),
+                                child: Text(
+                                  e.name,
+                                  style: medium.copyWith(
+                                      color: branchController
+                                                  .currentBranch.value ==
+                                              (e.commit.sha)
+                                          ? Colors.white
+                                          : const Color(0xff5F607E)),
+                                )),
+                          ),
                         ))
                     .toList(),
               )),
