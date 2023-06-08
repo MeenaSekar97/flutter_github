@@ -19,6 +19,7 @@ class LogoutCardWidget extends StatelessWidget {
         SharedPreferences preferences = await SharedPreferences.getInstance();
         preferences.clear();
         FirebaseAuth.instance.signOut();
+        
         Get.offAll(const AuthScreen(title: 'title'));
       },
       child: Padding(
