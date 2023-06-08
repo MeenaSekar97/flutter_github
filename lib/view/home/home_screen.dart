@@ -69,9 +69,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   Padding(
                       padding: EdgeInsets.symmetric(vertical: 20.hp),
                       child: Center(
-                          child: (homeController.title.value == '' && homeController.loading.isFalse)
+                          child: (homeController.orgList.isEmpty &&
+                                  homeController.loading.isFalse)
                               ? Text(
-                                  'no organsations found in your account.',
+                                  'No projects found in your organisation.',
                                   style: medium,
                                 )
                               : Transform.scale(

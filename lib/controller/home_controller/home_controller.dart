@@ -12,13 +12,19 @@ class HomeController extends GetxController {
 
   getAuthService(name, OrgModel org) async {
     loading(true);
+    orgList.clear();
     avatar.value = org.avatarUrl;
     title.value = org.login;
     sub.value = org.nodeId.toString();
     final res = await HomeService.homeService(name);
+
     if (res != null) {
-      orgList(res);
-      loading(false);
+      if (res.isNotEmpty) {
+        orgList(res);
+        loading(false);
+      } else {
+        loading(false);
+      }
     } else {
       loading(false);
     }

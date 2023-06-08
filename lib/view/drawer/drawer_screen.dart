@@ -25,8 +25,6 @@ class _DrawerScreenState extends State<DrawerScreen> {
 
   @override
   void initState() {
-    print('data');
-    orgController.getAuthService();
     super.initState();
   }
 
