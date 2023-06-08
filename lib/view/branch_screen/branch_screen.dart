@@ -37,6 +37,14 @@ class _BranchScreenState extends State<BranchScreen> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: primaryColor,
+        leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios_new,
+              color: Colors.white,
+            )),
         title: Text(
           'Project',
           style: medium.copyWith(color: Colors.white, fontSize: 18.sp),
@@ -153,7 +161,7 @@ class _BranchScreenState extends State<BranchScreen> {
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 20.hp),
                   child: Transform.scale(
-                      scale: 0.5, child: CircularProgressIndicator()),
+                      scale: 0.5, child: const CircularProgressIndicator()),
                 ),
               ...branchController.branchCommitList
                   .map(

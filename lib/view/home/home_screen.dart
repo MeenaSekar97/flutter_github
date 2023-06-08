@@ -36,6 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: DrawerScreen(
             globalKey: key,
             onSelect: (orgName) {
+              orgController.current(orgName.login);
               homeController.getAuthService(orgName.login, orgName);
               setState(() {});
             },

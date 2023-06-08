@@ -21,7 +21,7 @@ class DrawerScreen extends StatefulWidget {
 }
 
 class _DrawerScreenState extends State<DrawerScreen> {
-  var orgController = Get.put(OrgController(), permanent: true);
+  var orgController = Get.find<OrgController>();
 
   @override
   void initState() {
@@ -96,7 +96,9 @@ class _DrawerScreenState extends State<DrawerScreen> {
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                          color: const Color(0xffD3DEFF),
+                          color: (orgController.current.value == element.login)
+                              ? const Color(0xffD3DEFF)
+                              : Colors.white,
                           borderRadius: BorderRadius.circular(10)),
                       padding: EdgeInsets.all(10.h),
                       child: Row(

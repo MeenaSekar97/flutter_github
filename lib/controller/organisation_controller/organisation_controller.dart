@@ -13,6 +13,7 @@ class OrgController extends GetxController {
   var initial = true.obs;
 
   var loading = false.obs;
+  var current = ''.obs;
   var orgList = <OrgModel>[].obs;
 
   getAuthService() async {
@@ -23,8 +24,9 @@ class OrgController extends GetxController {
       orgList(res);
       loading(false);
       if (Get.isRegistered<HomeController>() && orgList.isNotEmpty) {
+        current(orgList[0].login);
         var data = Get.find<HomeController>();
-        data.getAuthService(orgList[0].login,orgList[0]);
+        data.getAuthService(orgList[0].login, orgList[0]);
         data.title(orgList[0].login);
         data.avatar(orgList[0].avatarUrl);
         data.sub(orgList[0].nodeId.toString());
