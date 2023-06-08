@@ -1,3 +1,4 @@
+import 'package:flutter_github/controller/home_controller/home_controller.dart';
 import 'package:flutter_github/model/org_model.dart';
 import 'package:flutter_github/services/organisation_service/organisation_service.dart';
 import 'package:get/get.dart';
@@ -21,6 +22,13 @@ class OrgController extends GetxController {
     if (res != null) {
       orgList(res);
       loading(false);
+      if (Get.isRegistered<HomeController>() && orgList.isNotEmpty) {
+        var data = Get.find<HomeController>();
+        data.getAuthService(orgList[0].login,orgList[0]);
+        data.title(orgList[0].login);
+        data.avatar(orgList[0].avatarUrl);
+        data.sub(orgList[0].nodeId.toString());
+      }
     } else {
       loading(false);
     }

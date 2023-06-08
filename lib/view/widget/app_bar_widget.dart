@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_github/controller/home_controller/home_controller.dart';
 import 'package:flutter_github/utils/constants.dart';
 import 'package:flutter_github/utils/extensions.dart';
 import 'package:flutter_github/utils/pref_init.dart';
 import 'package:flutter_github/utils/styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
-PreferredSizeWidget appBarWidget(String avatar, title, sub,
+PreferredSizeWidget appBarWidget(
     {required BuildContext context,
     required double height,
     required GlobalKey<ScaffoldState> key}) {
+  var data = Get.find<HomeController>();
   return PreferredSize(
     preferredSize: Size(MediaQuery.of(context).size.width, 25.hp),
     child: Stack(
@@ -41,6 +44,15 @@ PreferredSizeWidget appBarWidget(String avatar, title, sub,
                         style: bold.copyWith(
                             color: Colors.white, fontSize: 17.sp)),
                   ),
+                  Spacer(),
+                  Image.asset(
+                    'assets/notifiaction.png',
+                    height: 15.h,
+                    width: 15.w,
+                  ),
+                  SizedBox(
+                    width: 15,
+                  )
                 ],
               ),
               Padding(
@@ -70,7 +82,7 @@ PreferredSizeWidget appBarWidget(String avatar, title, sub,
               decoration: BoxDecoration(boxShadow: [
                 BoxShadow(color: Colors.grey.withOpacity(0.3), spreadRadius: 1)
               ], color: Colors.white, borderRadius: BorderRadius.circular(10)),
-              child: (title == '')
+              child: (data.title.value == '')
                   ? Center(
                       child: Text(
                       'Please selected the organsation.',
@@ -83,7 +95,7 @@ PreferredSizeWidget appBarWidget(String avatar, title, sub,
                         ClipRRect(
                           borderRadius: BorderRadius.circular(10),
                           child: Image.network(
-                            avatar,
+                            data.avatar.value,
                             height: 50.h,
                             width: 50.w,
                           ),
@@ -96,7 +108,7 @@ PreferredSizeWidget appBarWidget(String avatar, title, sub,
                           children: [
                             Flexible(
                               child: Text(
-                                title,
+                                data.title.value,
                                 style: bold.copyWith(fontSize: 18.sp),
                               ),
                             ),
@@ -110,7 +122,7 @@ PreferredSizeWidget appBarWidget(String avatar, title, sub,
                                   borderRadius: BorderRadius.circular(10),
                                   color: const Color(0xff22CCCC)),
                               child: Text(
-                                sub,
+                                data.sub.value,
                                 style: bold.copyWith(
                                     fontSize: 12.sp, color: Colors.white),
                               ),

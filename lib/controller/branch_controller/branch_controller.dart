@@ -33,6 +33,7 @@ class BranchController extends GetxController {
 
   getCommitListService(name, projectname, sha) async {
     commitLoading(true);
+    branchCommitList.clear();
     final res =
         await BranchService.branchCommitListService(name, projectname, sha);
 

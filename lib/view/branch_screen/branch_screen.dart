@@ -149,6 +149,12 @@ class _BranchScreenState extends State<BranchScreen> {
                         ))
                     .toList(),
               )),
+              if (branchController.commitLoading.isTrue)
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20.hp),
+                  child: Transform.scale(
+                      scale: 0.5, child: CircularProgressIndicator()),
+                ),
               ...branchController.branchCommitList
                   .map(
                     (element) => CommitDetailsCard(

@@ -22,11 +22,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> key = GlobalKey();
-  var orgController = Get.put(OrgController(), permanent: true);
   var homeController = Get.put(HomeController(), permanent: true);
-  var avatar = '';
-  var title = '';
-  var sub = '';
+  var orgController = Get.put(OrgController(), permanent: true);
 
   @override
   Widget build(BuildContext context) {
@@ -39,15 +36,12 @@ class _HomeScreenState extends State<HomeScreen> {
           child: DrawerScreen(
             globalKey: key,
             onSelect: (orgName) {
-              avatar = orgName.avatarUrl;
-              title = orgName.login;
-              sub = orgName.nodeId.toString();
-              homeController.getAuthService(orgName.login);
+              homeController.getAuthService(orgName.login, orgName);
               setState(() {});
             },
           ),
         ),
-        appBar: appBarWidget(avatar, title, sub,
+        appBar: appBarWidget(
             context: context, height: AppBar().preferredSize.height, key: key),
         body: Padding(
           padding: const EdgeInsets.all(15),
@@ -75,9 +69,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   Padding(
                       padding: EdgeInsets.symmetric(vertical: 20.hp),
                       child: Center(
-                          child: (title == '')
+                          child: (homeController.title.value == '' && homeController.loading.isFalse)
                               ? Text(
-                                  'Please selected the organsation.',
+                                  'no organsations found in your account.',
                                   style: medium,
                                 )
                               : Transform.scale(
