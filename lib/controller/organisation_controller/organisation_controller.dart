@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 class OrgController extends GetxController {
   @override
   void onInit() {
-    getAuthService();
+    getOrganisationService();
     super.onInit();
   }
 
@@ -16,7 +16,7 @@ class OrgController extends GetxController {
   var current = ''.obs;
   var orgList = <OrgModel>[].obs;
 
-  getAuthService() async {
+  getOrganisationService() async {
     loading(true);
     final res = await OrganisationService.organisationService();
 
@@ -26,7 +26,7 @@ class OrgController extends GetxController {
       if (Get.isRegistered<HomeController>() && orgList.isNotEmpty) {
         current(orgList[0].login);
         var data = Get.find<HomeController>();
-        data.getAuthService(orgList[0].login, orgList[0]);
+        data.getProjectService(orgList[0].login, orgList[0]);
         data.title(orgList[0].login);
         data.avatar(orgList[0].avatarUrl);
         data.sub(orgList[0].nodeId.toString());

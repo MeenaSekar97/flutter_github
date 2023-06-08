@@ -1,13 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_github/controller/organisation_controller/organisation_controller.dart';
-import 'package:flutter_github/view/auth_screen/auth_screen.dart';
+import 'package:flutter_github/view/drawer/widget/logout_card_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../model/org_model.dart';
 import '../../utils/styles.dart';
+import 'widget/organisation_card_widget.dart';
 
 class DrawerScreen extends StatefulWidget {
   const DrawerScreen(
@@ -88,87 +88,20 @@ class _DrawerScreenState extends State<DrawerScreen> {
               ),
               ...orgController.orgList.map((element) {
                 return Padding(
-                  padding: const EdgeInsets.all(12),
+                  padding: EdgeInsets.symmetric(horizontal: 13.w),
                   child: GestureDetector(
                     onTap: () {
                       widget.onSelect(element);
                       widget.globalKey.currentState!.closeDrawer();
                     },
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: (orgController.current.value == element.login)
-                              ? const Color(0xffD3DEFF)
-                              : Colors.white,
-                          borderRadius: BorderRadius.circular(10)),
-                      padding: EdgeInsets.all(10.h),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: Image.network(
-                              element.avatarUrl,
-                              height: 40.h,
-                              fit: BoxFit.fill,
-                              width: 40.h,
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Flexible(
-                            child: Text(
-                              element.login,
-                              style: bold.copyWith(fontSize: 16.sp),
-                            ),
-                          )
-                        ],
-                      ),
+                    child: OrganisationCardWidget(
+                      orgController: orgController,
+                      element: element,
                     ),
                   ),
                 );
               }).toList(),
-              GestureDetector(
-                onTap: () async {
-                  SharedPreferences preferences =
-                      await SharedPreferences.getInstance();
-                  preferences.clear();
-                  FirebaseAuth.instance.signOut();
-                  Get.offAll(const AuthScreen(title: 'title'));
-                },
-                child: Padding(
-                  padding: const EdgeInsets.all(12),
-                  child: Container(
-                    padding: EdgeInsets.all(10.h),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(8),
-                          decoration: BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.grey.withOpacity(0.3),
-                                    spreadRadius: 1)
-                              ],
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10)),
-                          child: const Icon(Icons.logout_outlined),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Flexible(
-                          child: Text(
-                            'Logout',
-                            style: bold.copyWith(fontSize: 16.sp),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              )
+              const LogoutCardWidget()
             ],
           ),
         ),

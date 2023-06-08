@@ -1,5 +1,8 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
+
+//this file used for access shared pref data instantly without asyn wait///
+
 class PrefUtil {
   static late final SharedPreferences preferences;
   static bool _init = false;

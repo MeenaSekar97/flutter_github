@@ -10,7 +10,7 @@ class HomeController extends GetxController {
   var title = ''.obs;
   var sub = ''.obs;
 
-  getAuthService(name, OrgModel org) async {
+  getProjectService(name, OrgModel org) async {
     loading(true);
     orgList.clear();
     avatar.value = org.avatarUrl;

@@ -22,11 +22,11 @@ class CommitDetailsCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: EdgeInsets.all(8),
+            padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-                color: Color(0xffFFF5EB),
+                color: const Color(0xffFFF5EB),
                 borderRadius: BorderRadius.circular(8)),
-            child: Icon(
+            child: const Icon(
               Icons.folder,
               color: Color(0xffFDBD00),
             ),

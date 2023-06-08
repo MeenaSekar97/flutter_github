@@ -1,7 +1,5 @@
 import 'package:flutter_github/model/branch_list_model.dart';
-import 'package:flutter_github/model/project_model.dart';
 import 'package:flutter_github/services/branch_service/branch_service.dart';
-import 'package:flutter_github/services/home_service/home_service.dart';
 import 'package:get/get.dart';
 
 import '../../model/branch_commit_list.dart';

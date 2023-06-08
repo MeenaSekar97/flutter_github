@@ -1,7 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_github/controller/branch_controller/branch_controller.dart';
 import 'package:flutter_github/utils/extensions.dart';
 import 'package:flutter_github/utils/styles.dart';
@@ -9,7 +6,6 @@ import 'package:flutter_github/view/branch_screen/widgets/commited_list_card.dar
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../model/branch_commit_list.dart';
 import '../../model/project_model.dart';
 
 class BranchScreen extends StatefulWidget {

@@ -44,13 +44,13 @@ PreferredSizeWidget appBarWidget(
                         style: bold.copyWith(
                             color: Colors.white, fontSize: 17.sp)),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Image.asset(
                     'assets/notifiaction.png',
                     height: 15.h,
                     width: 15.w,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 15,
                   )
                 ],
